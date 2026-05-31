@@ -14,6 +14,10 @@ Expected response:
 CI/CD Pipeline Working!
 ```
 
+## Demo
+
+![Application demo](assets/demo.png)
+
 ## Repository
 
 ```bash
@@ -34,6 +38,7 @@ https://github.com/Anshuman-565/devops-task-new.git
 |-- .dockerignore
 |-- .github/workflows/main.yml
 |-- .gitignore
+|-- assets/demo.png
 |-- Dockerfile
 |-- index.js
 |-- package-lock.json
