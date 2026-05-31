@@ -1,43 +1,226 @@
-# DevOps Task 1 - CI/CD Pipeline Using GitHub Actions
+# DevOps Task New
 
-## Objective
+A simple Node.js and Express application packaged with Docker and checked by a GitHub Actions CI workflow.
 
-Automate the build and deployment process of a Node.js application using GitHub Actions and Docker.
+When the server is running, open:
 
-## Technologies Used
+```bash
+http://localhost:3000
+```
 
-* Node.js
-* Express.js
-* Docker
-* GitHub
-* GitHub Actions
+Expected response:
+
+```text
+CI/CD Pipeline Working!
+```
+
+## Repository
+
+```bash
+https://github.com/Anshuman-565/devops-task-new.git
+```
+
+## Tech Stack
+
+- Node.js 20
+- Express.js
+- Docker
+- GitHub Actions
 
 ## Project Structure
 
-* index.js
-* package.json
-* Dockerfile
-* .github/workflows/main.yml
+```text
+.
+|-- .dockerignore
+|-- .github/workflows/main.yml
+|-- .gitignore
+|-- Dockerfile
+|-- index.js
+|-- package-lock.json
+|-- package.json
+`-- README.md
+```
+
+## Architecture Flow
+
+```mermaid
+flowchart LR
+    User[User / Browser] --> Localhost[localhost:3000]
+    Localhost --> Container[Docker Container]
+    Container --> Node[Node.js Runtime]
+    Node --> Express[Express App]
+    Express --> Response[CI/CD Pipeline Working!]
+
+    Developer[Developer] --> GitHub[GitHub Repository]
+    GitHub --> Actions[GitHub Actions CI]
+    Actions --> Install[npm install]
+    Install --> Verify[Verify Express Build]
+```
+
+## Run Locally Without Docker
+
+Clone the repository:
+
+```bash
+git clone https://github.com/Anshuman-565/devops-task-new.git
+cd devops-task-new
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Start the server:
+
+```bash
+npm start
+```
+
+Open:
+
+```bash
+http://localhost:3000
+```
+
+Stop the server with:
+
+```bash
+Ctrl + C
+```
+
+## Run With Docker
+
+Clone the repository:
+
+```bash
+git clone https://github.com/Anshuman-565/devops-task-new.git
+cd devops-task-new
+```
+
+Build the Docker image:
+
+```bash
+docker build -t devops-task-new .
+```
+
+Run the container:
+
+```bash
+docker run -d --name devops-task-new-app -p 3000:3000 devops-task-new
+```
+
+Open:
+
+```bash
+http://localhost:3000
+```
+
+Check running containers:
+
+```bash
+docker ps
+```
+
+View app logs:
+
+```bash
+docker logs devops-task-new-app
+```
+
+Stop the container:
+
+```bash
+docker stop devops-task-new-app
+```
+
+Start the same container again:
+
+```bash
+docker start devops-task-new-app
+```
+
+Remove the container if you want to recreate it:
+
+```bash
+docker rm devops-task-new-app
+```
+
+If the container name already exists, remove the old stopped container first:
+
+```bash
+docker rm devops-task-new-app
+docker run -d --name devops-task-new-app -p 3000:3000 devops-task-new
+```
+
+## Useful Docker Commands
+
+List all containers:
+
+```bash
+docker ps -a
+```
+
+List Docker images:
+
+```bash
+docker images
+```
+
+Check what is using port 3000:
+
+```bash
+lsof -iTCP:3000 -sTCP:LISTEN
+```
+
+Remove the Docker image:
+
+```bash
+docker rmi devops-task-new
+```
 
 ## CI/CD Workflow
 
-1. Trigger on push to main branch
-2. Checkout repository
-3. Setup Node.js
-4. Install dependencies
-5. Verify application build
-6. Complete workflow
+The GitHub Actions workflow is located at:
 
-## Docker Commands Used
+```text
+.github/workflows/main.yml
+```
 
-Build Docker Image:
-docker build -t devops-task-new .
+It runs automatically when code is pushed to the `main` branch.
 
-Run Docker Container:
-docker run -p 3000:3000 devops-task-new
+Workflow steps:
 
-## Output
+1. Checkout the repository
+2. Setup Node.js 20
+3. Install dependencies with `npm install`
+4. Verify the application dependency build
 
-Application runs successfully and displays:
+## Git Commands
 
-CI/CD Pipeline Working!
+Initialize Git only if the folder is not already a Git repository:
+
+```bash
+git init
+```
+
+Stage and commit changes:
+
+```bash
+git add .
+git commit -m "Initial commit"
+```
+
+Add the GitHub remote:
+
+```bash
+git remote add origin https://github.com/Anshuman-565/devops-task-new.git
+```
+
+Push to GitHub:
+
+```bash
+git branch -M main
+git push -u origin main
+```
